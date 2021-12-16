@@ -1684,8 +1684,9 @@ class Bond:
         # Make sure we're not bonding me to myself
         if atom1 is atom2:
             raise MoleculeError(f'Cannot bond atom to itself! Atoms are: {atom1} {atom2}')
-        if isinstance(atom1, ExtraPoint) and isinstance(atom2, ExtraPoint):
-            raise MoleculeError('Cannot bond two virtual sites/extra points together')
+        # COMMENTED THIS OUT TO SUPRESS GROMACS 54A7 WARNINGS ABOUT VIRTUAL SITES
+        #if isinstance(atom1, ExtraPoint) and isinstance(atom2, ExtraPoint):
+        #    raise MoleculeError('Cannot bond two virtual sites/extra points together')
         # Order the atoms so the lowest atom # is first
         self.atom1 = atom1
         self.atom2 = atom2
